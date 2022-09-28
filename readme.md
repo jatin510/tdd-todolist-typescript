@@ -26,3 +26,9 @@
 ### TODO List
 
 - List of TODOs, name, id, CreatedAt, UpdatedAt
+
+## Deployment
+
+- github actions
+- docker
+- readme
