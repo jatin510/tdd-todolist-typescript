@@ -20,4 +20,18 @@ export class Guard {
       return Result.ok<GuardResponse>();
     }
   }
+
+  public static againstNullOrUndefinedBulk(
+    args: GuardArgumentCollection
+  ): Result<GuardResponse> {
+    for (let arg of args) {
+      const result = this.againstNullOrUndefined(
+        arg.argument,
+        arg.argumentName
+      );
+      if (result.isFailure) return result;
+    }
+
+    return Result.ok<GuardResponse>();
+  }
 }
