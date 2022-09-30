@@ -9,7 +9,9 @@ describe('Testing Task domain', () => {
     expect(createTask).toThrow();
   });
 
-  it('task should be string and not be empty', () => {
-    //  expect();
+  it('create a successful task', () => {
+    const taskProps = { text: 'hello' };
+    const task = Task.create(taskProps);
+    expect(task.text).toEqual(taskProps.text);
   });
 });

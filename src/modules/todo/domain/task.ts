@@ -7,8 +7,11 @@ interface ITaskProps {
 export class Task extends ValueObject<ITaskProps> {
   //   props: ITaskProps;
 
+  public text: string;
+
   private constructor(props: ITaskProps) {
     super(props);
+    this.text = props.text;
   }
 
   public static create(props: ITaskProps) {
