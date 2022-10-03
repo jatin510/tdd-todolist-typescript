@@ -1,13 +1,30 @@
-import { randomUUID } from 'crypto';
+import { ValueObject } from '../../../shared/domain/valueObject';
 
-export type TodoProps = {
-  id?: string;
-};
+interface ITodoProps {
+  text: string;
+  isCompleted?: boolean;
+}
 
-export default class Todo {
-  id: string;
+export class Todo extends ValueObject<ITodoProps> {
+  //   props: ITodoProps;
 
-  constructor(props: TodoProps) {
-    this.id = props?.id || randomUUID();
+  public text: string;
+  public isCompleted: boolean;
+
+  private constructor(props: ITodoProps) {
+    super(props);
+    this.text = props.text;
+    this.isCompleted = props?.isCompleted ?? false;
+  }
+
+  public static create(props: ITodoProps) {
+    const text = props.text;
+
+    if (typeof text !== 'string' || text.trim().length === 0) {
+      throw new Error('Invalid Todo');
+    }
+
+    const todo = new Todo(props);
+    return todo;
   }
 }
