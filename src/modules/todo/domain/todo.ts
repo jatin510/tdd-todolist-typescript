@@ -1,18 +1,16 @@
-import { ValueObject } from '../../../shared/domain/valueObject';
+import { Entity } from '../../../shared/domain/entity';
 
 interface ITodoProps {
   text: string;
   isCompleted?: boolean;
 }
 
-export class Todo extends ValueObject<ITodoProps> {
-  //   props: ITodoProps;
-
+export class Todo extends Entity<ITodoProps> {
   public text: string;
   public isCompleted: boolean;
 
-  private constructor(props: ITodoProps) {
-    super(props);
+  private constructor(props: ITodoProps, id?: string) {
+    super(props, id);
     this.text = props.text;
     this.isCompleted = props?.isCompleted ?? false;
   }
