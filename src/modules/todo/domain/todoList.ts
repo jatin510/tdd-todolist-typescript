@@ -1,13 +1,19 @@
 import { randomUUID } from 'crypto';
+import { Entity } from '../../../shared/domain/entity';
+import { Todo } from './todo';
 
-export type TodoListProps = {
-  id?: string;
-};
+// export type TodoListProps = {
+//   id?: string;
+//   todos: Todo[];
+// };
 
-export default class TodoList {
-  id: string;
+export default class TodoList extends Entity<null> {
+  todos: Todo[];
 
-  constructor(props: TodoListProps) {
-    this.id = props?.id || randomUUID();
+  constructor() {
+    super(null);
+    this.todos = [];
   }
+
+  public static;
 }
