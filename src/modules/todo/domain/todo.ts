@@ -1,24 +1,24 @@
 import { Entity } from '../../../shared/domain/entity';
 
-interface ITodoProps {
-  text: string;
+export interface ITodoProps {
+  task: string;
   isCompleted?: boolean;
 }
 
 export class Todo extends Entity<ITodoProps> {
-  public text: string;
+  public task: string;
   public isCompleted: boolean;
 
   private constructor(props: ITodoProps, id?: string) {
     super(props, id);
-    this.text = props.text;
+    this.task = props.task;
     this.isCompleted = props?.isCompleted ?? false;
   }
 
   public static create(props: ITodoProps) {
-    const text = props.text;
+    const task = props.task;
 
-    if (typeof text !== 'string' || text.trim().length === 0) {
+    if (typeof task !== 'string' || task.trim().length === 0) {
       throw new Error('Invalid Todo');
     }
 
