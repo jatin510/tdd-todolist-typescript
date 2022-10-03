@@ -1,3 +1,5 @@
+import { randomUUID } from 'crypto';
+
 const isEntity = (v: any): v is Entity<any> => {
   return v instanceof Entity;
 };
@@ -7,7 +9,7 @@ export abstract class Entity<T> {
   public readonly props: T;
 
   constructor(props: T, id?: string) {
-    this._id = id ? id : '';
+    this._id = id ? id : randomUUID();
     this.props = props;
   }
 
