@@ -3,16 +3,24 @@ import { Entity } from '../../../shared/domain/entity';
 export interface ITodoProps {
   task: string;
   isCompleted?: boolean;
+  deadline?: Date;
 }
 
 export class Todo extends Entity<ITodoProps> {
-  public task: string;
-  public isCompleted: boolean;
-
   private constructor(props: ITodoProps, id?: string) {
     super(props, id);
-    this.task = props.task;
-    this.isCompleted = props?.isCompleted ?? false;
+  }
+
+  get task() {
+    return this.props.task;
+  }
+
+  get isCompleted() {
+    return this.props.isCompleted;
+  }
+
+  get deadline() {
+    return this.props.deadline;
   }
 
   public static create(props: ITodoProps) {
