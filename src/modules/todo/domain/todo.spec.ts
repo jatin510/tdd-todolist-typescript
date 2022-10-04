@@ -22,4 +22,13 @@ describe('Testing todo domain', () => {
     expect(todo.task).toEqual(todoProps.task);
     expect(todo.isCompleted).toEqual(todoProps.isCompleted);
   });
+
+  test('every task should have createdAt and updatedAt field', () => {
+    todoProps = { task: 'hello', isCompleted: true };
+    const todo = Todo.create(todoProps);
+    expect(todo.task).toEqual(todoProps.task);
+    expect(todo.isCompleted).toEqual(todoProps.isCompleted);
+    expect(todo.createdAt).toEqual(expect.anything());
+    expect(todo.updatedAt).toEqual(expect.anything());
+  });
 });

@@ -4,6 +4,8 @@ export interface ITodoProps {
   task: string;
   isCompleted?: boolean;
   deadline?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export class Todo extends Entity<ITodoProps> {
@@ -23,6 +25,14 @@ export class Todo extends Entity<ITodoProps> {
     return this.props.deadline;
   }
 
+  get createdAt() {
+    return this.props.createdAt;
+  }
+
+  get updatedAt() {
+    return this.props.updatedAt;
+  }
+
   public static create(props: ITodoProps) {
     const task = props.task;
 
@@ -30,7 +40,12 @@ export class Todo extends Entity<ITodoProps> {
       throw new Error('Invalid Todo');
     }
 
-    const todo = new Todo(props);
+    const todo = new Todo({
+      ...props,
+      createdAt: props.createdAt ? props.createdAt : new Date(),
+      updatedAt: props.updatedAt ? props.updatedAt : new Date(),
+    });
+
     return todo;
   }
 }
