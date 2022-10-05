@@ -1,8 +1,8 @@
 import { Entity } from '../../../shared/domain/entity';
-import { Todo } from './todo';
+import { ITodoProps, Todo } from './todo';
 
 export interface ITodoListProps {
-  todos?: Todo[];
+  todos?: Array<ITodoProps>;
 }
 
 export default class TodoList extends Entity<ITodoListProps> {
