@@ -12,12 +12,16 @@ describe('Testing TodoList', () => {
   });
 
   test('should create a TodoList with a task', () => {
+    const todo1 = Todo.create({ task: 'task1' });
     todoListProps = {
-      todos: [{ task: 'task1' }],
+      todos: [todo1],
     };
+
+    console.log(todo1);
 
     const todoList = TodoList.create(todoListProps);
     expect(todoList).toBeDefined();
     expect(todoList.todos?.length).toEqual(1);
+    expect(todoList.todos?.[0].task === 'task1');
   });
 });

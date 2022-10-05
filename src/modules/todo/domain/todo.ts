@@ -42,6 +42,7 @@ export class Todo extends Entity<ITodoProps> {
 
     const todo = new Todo({
       ...props,
+      isCompleted: props.isCompleted ? props.isCompleted : false,
       createdAt: props.createdAt ? props.createdAt : new Date(),
       updatedAt: props.updatedAt ? props.updatedAt : new Date(),
     });

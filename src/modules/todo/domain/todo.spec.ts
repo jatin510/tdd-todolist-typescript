@@ -13,6 +13,7 @@ describe('Testing todo domain', () => {
   it('should have a default isCompleted props to false', () => {
     todoProps = { task: 'hello' };
     const todo = Todo.create(todoProps);
+    expect(todo.isCompleted).toBeDefined();
     expect(todo.isCompleted).toBeFalsy();
   });
 
