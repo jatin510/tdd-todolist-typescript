@@ -17,11 +17,13 @@ describe('Testing TodoList', () => {
       todos: [todo1],
     };
 
-    console.log(todo1);
-
     const todoList = TodoList.create(todoListProps);
     expect(todoList).toBeDefined();
     expect(todoList.todos?.length).toEqual(1);
-    expect(todoList.todos?.[0].task === 'task1');
+    expect(todoList.todos?.[0].task).toEqual('task1');
+    expect(todoList.todos?.[0].isCompleted).toBeDefined();
+    expect(todoList.todos?.[0].isCompleted).toBeFalsy();
+    expect(todoList.todos?.[0].createdAt).toBeDefined();
+    expect(todoList.todos?.[0].updatedAt).toBeDefined();
   });
 });
