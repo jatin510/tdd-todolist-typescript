@@ -33,7 +33,7 @@ export class Todo extends Entity<ITodoProps> {
     return this.props.updatedAt;
   }
 
-  public static create(props: ITodoProps) {
+  public static create(props: ITodoProps): Todo {
     const task = props.task;
 
     if (typeof task !== 'string' || task.trim().length === 0) {
