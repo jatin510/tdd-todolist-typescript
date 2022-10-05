@@ -27,3 +27,22 @@ describe('Testing TodoList', () => {
     expect(todoList.todos?.[0].updatedAt).toBeDefined();
   });
 });
+
+describe('Test adding todos in todo List', () => {
+  let todoListProps: ITodoListProps = {};
+  let todoList: TodoList;
+
+  beforeEach(() => {
+    todoList = TodoList.create(todoListProps);
+  });
+
+  test('add function will add new Todo inside todoList', () => {
+    const todo1 = Todo.create({ task: 'task1' });
+
+    // TODO
+    // function to implement
+    todoList.addTask(todo1);
+    expect(todoList.totalNumTodos).toEqual(1);
+    expect(todoList.todos?.[0]).toEqual(todo1);
+  });
+});
