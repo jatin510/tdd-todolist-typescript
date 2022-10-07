@@ -30,5 +30,8 @@
 ## Deployment
 
 - github actions
+  - test will run before deployment
+  - build an image - on `dockerhub` or anything
+  - anything will be merged into `branch` we will create image and deploy it to `server`.
 - docker
 - readme
