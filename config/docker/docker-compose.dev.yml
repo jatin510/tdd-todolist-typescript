@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  todolist-server:
+    build:
+      context: ../..
+      dockerfile: config/docker/server/Dockerfile
+
+    restart: always
+    env_file: ../../.env
