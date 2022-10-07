@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rimraf ./dist && tsc",
-    "start": "yarn run build && node dist/index.js",
+    "start": "node dist/index.js",
     "dev": "ts-node-dev --respawn src/index.ts --watch-all",
     "test": "jest --watch-all"
   },
