@@ -39,10 +39,37 @@ describe('Test adding todos in todo List', () => {
   test('add function will add new Todo inside todoList', () => {
     const todo1 = Todo.create({ task: 'task1' });
 
-    // TODO
-    // function to implement
     todoList.addTask(todo1);
     expect(todoList.totalNumTodos).toEqual(1);
     expect(todoList.todos?.[0]).toEqual(todo1);
+  });
+
+  test('throw error on removing the todo from the todoList', () => {
+    let taskId: string;
+    const removeTodo = () => {
+      todoList.removeTask(taskId);
+    };
+
+    expect(() => removeTodo()).toThrow();
+  });
+
+  test('throw error on removing the task from the empty todoList', () => {
+    let taskId = '1';
+    const removeTodo = () => {
+      todoList.removeTask(taskId);
+    };
+
+    expect(() => removeTodo()).toThrow();
+  });
+
+  test('successfully remove the task from the todoList', () => {
+    const todo1 = Todo.create({ task: 'task1' });
+
+    todoList.addTask(todo1);
+
+    let taskId = todo1.id;
+    todoList.removeTask(taskId);
+
+    expect(todoList.totalNumTodos).toEqual(0);
   });
 });

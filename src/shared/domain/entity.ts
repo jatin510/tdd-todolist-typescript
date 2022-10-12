@@ -6,7 +6,7 @@ const isEntity = (v: any): v is Entity<any> => {
 
 export abstract class Entity<T> {
   protected readonly _id: string;
-  public readonly props: T;
+  public props: T;
 
   constructor(props: T, id?: string) {
     this._id = id ? id : randomUUID();

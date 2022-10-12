@@ -13,6 +13,10 @@ export class Todo extends Entity<ITodoProps> {
     super(props, id);
   }
 
+  get id(): string {
+    return this._id;
+  }
+
   get task() {
     return this.props.task;
   }
