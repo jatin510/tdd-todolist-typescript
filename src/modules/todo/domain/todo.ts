@@ -37,6 +37,10 @@ export class Todo extends Entity<ITodoProps> {
     return this.props.updatedAt;
   }
 
+  public updateTask(task: string) {
+    this.props.task = task;
+  }
+
   public static create(props: ITodoProps): Todo {
     const task = props.task;
 

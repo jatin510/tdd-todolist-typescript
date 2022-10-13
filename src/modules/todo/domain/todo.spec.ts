@@ -2,6 +2,7 @@ import { ITodoProps, Todo } from './todo';
 
 describe('Testing todo domain', () => {
   let todoProps: ITodoProps;
+
   it('todo should be a non empty string', () => {
     todoProps = { task: '' };
     const createTodo = () => {
@@ -31,5 +32,14 @@ describe('Testing todo domain', () => {
     expect(todo.isCompleted).toEqual(todoProps.isCompleted);
     expect(todo.createdAt).toEqual(expect.anything());
     expect(todo.updatedAt).toEqual(expect.anything());
+  });
+
+  test('update the task in todo', () => {
+    todoProps = { task: 'hello', isCompleted: true };
+    const todo = Todo.create(todoProps);
+    const newTask = 'updated task';
+    todo.updateTask(newTask);
+    expect(todo.task).toEqual(newTask);
+    expect(todo.isCompleted).toEqual(todoProps.isCompleted);
   });
 });
