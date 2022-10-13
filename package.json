@@ -8,7 +8,8 @@
     "build": "rimraf ./dist && tsc",
     "start": "node dist/index.js",
     "dev": "ts-node-dev --respawn src/index.ts --watch-all",
-    "test": "jest --watch-all"
+    "test": "jest --watch-all",
+    "test-usecase": "ts-node-dev src/shared/local-testing/index.ts"
   },
   "dependencies": {
     "ts-node": "^10.9.1"
