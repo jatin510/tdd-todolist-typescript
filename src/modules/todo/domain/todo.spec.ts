@@ -35,11 +35,31 @@ describe('Testing todo domain', () => {
   });
 
   test('update the task in todo', () => {
-    todoProps = { task: 'hello', isCompleted: true };
+    todoProps = { task: 'hello', isCompleted: false };
     const todo = Todo.create(todoProps);
     const newTask = 'updated task';
     todo.updateTask(newTask);
     expect(todo.task).toEqual(newTask);
     expect(todo.isCompleted).toEqual(todoProps.isCompleted);
+  });
+
+  test('update the deadline in todo', () => {
+    todoProps = { task: 'hello', isCompleted: false };
+    const todo = Todo.create(todoProps);
+    const newDeadline = new Date();
+    todo.updateDeadline(newDeadline);
+
+    expect(todo.task).toEqual(todoProps.task);
+    expect(todo.deadline).toEqual(newDeadline);
+  });
+
+  test('update the completed status of the todo', () => {
+    todoProps = { task: 'hello', isCompleted: false };
+    const todo = Todo.create(todoProps);
+
+    const isCompleted = true;
+    todo.updateCompleteStatus(isCompleted);
+    expect(todo.task).toEqual(todoProps.task);
+    expect(todo.isCompleted).toEqual(isCompleted);
   });
 });

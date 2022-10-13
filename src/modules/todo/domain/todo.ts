@@ -41,6 +41,14 @@ export class Todo extends Entity<ITodoProps> {
     this.props.task = task;
   }
 
+  public updateDeadline(deadline: Date) {
+    this.props.deadline = deadline;
+  }
+
+  public updateCompleteStatus(isCompleted: boolean) {
+    this.props.isCompleted = isCompleted;
+  }
+
   public static create(props: ITodoProps): Todo {
     const task = props.task;
 
