@@ -1,6 +1,6 @@
-import { Todo } from "../../domain/todo";
-import { ITodoRepo } from "../../repo";
-import { CreateTodoDTO } from "./dto";
+import { Todo } from '../../domain/todo';
+import { ITodoRepo } from '../../repo';
+import { CreateTodoDTO } from './dto';
 
 export class CreateTodoUseCase {
   private todoRepo: ITodoRepo;
