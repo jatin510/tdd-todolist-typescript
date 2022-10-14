@@ -11,7 +11,7 @@ class LocalTodoRepo implements ITodoRepo {
   }
 
   async update(todo: Partial<Todo>): Promise<void> {
-    const olderTodo = this._todos.filter((todo) => todo.id === todo.id);
+    const olderTodo = this._todos.find((todoInDb) => todoInDb.id === todo.id);
     const updatedTodo = { ...olderTodo, ...todo };
     this._todos.push(updatedTodo);
   }
@@ -22,7 +22,23 @@ class LocalTodoRepo implements ITodoRepo {
   }
 
   async save(todo: Todo): Promise<void> {
-    this._todos.push(todo);
+    // check if already exists
+    const alreadyTodoWithId = await this._todos.find(
+      (todoInDb) => todoInDb.id === todo.id
+    );
+
+    if (alreadyTodoWithId) {
+      console.log('here');
+      const newTodos = await this._todos.filter(
+        (todoInDb) => todoInDb.id != todo.id
+      );
+      newTodos.push(todo);
+      this._todos = newTodos;
+      console.log('newTodos', newTodos);
+      console.log(this._todos);
+    } else {
+      this._todos.push(todo);
+    }
   }
 }
 
